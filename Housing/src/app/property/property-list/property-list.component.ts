@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { HousingService } from 'src/app/services/housing.service';
 import { IProperty } from '../IProperty.interface';
 
@@ -11,11 +12,17 @@ import { IProperty } from '../IProperty.interface';
 export class PropertyListComponent implements OnInit {
 
   Properties: Array<IProperty>;
+  SellRent = 1;
 
-  constructor(private _housingService: HousingService) { }
+  constructor(private _housingService: HousingService, private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this._housingService.getAllProperties().subscribe(
+
+    if (this._route.snapshot.url.toString()) {
+      this.SellRent = 2; // означає що ми на rent-property URL, в іншому випадку на base URL
+    }
+
+    this._housingService.getAllProperties(this.SellRent).subscribe(
       data => {
         this.Properties = data;
       },
