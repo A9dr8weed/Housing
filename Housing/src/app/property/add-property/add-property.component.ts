@@ -16,5 +16,4 @@ export class AddPropertyComponent implements OnInit {
   onBack() {
     this._router.navigate(['/']);
   }
-
 }
