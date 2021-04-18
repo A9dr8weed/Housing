@@ -10,7 +10,8 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 export class UserRegisterComponent implements OnInit {
 
   registrationForm: FormGroup; // обгортка над всіма FormControls
-  user: any = {}
+  user: any = {};
+  userSubmitted: boolean;
 
   constructor(private _fb: FormBuilder, private _userService: UserServiceService) { }
 
@@ -56,11 +57,16 @@ export class UserRegisterComponent implements OnInit {
   onSubmit() {
     console.log(this.registrationForm.value);
 
-    this.user = Object.assign(this.user, this.registrationForm.value); // присвоєння значення одного об'єкту іншому об'єкту
+    this.userSubmitted = true;
 
-    this._userService.addUsers(this.user);
+    if (this.registrationForm.valid) {
+      this.user = Object.assign(this.user, this.registrationForm.value); // присвоєння значення одного об'єкту іншому об'єкту
 
-    this.registrationForm.reset();
+      this._userService.addUsers(this.user);
+
+      this.registrationForm.reset();
+
+      this.userSubmitted = false;
+    }
   }
-
 }
