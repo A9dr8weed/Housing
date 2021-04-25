@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AlertifyService } from 'src/app/services/alertify.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class UserLoginComponent implements OnInit {
 
-  constructor(private _authService: AuthService, private _alertify: AlertifyService) { }
+  constructor(private _authService: AuthService, private _alertify: AlertifyService, private _router: Router) { }
 
   ngOnInit() {
   }
@@ -23,6 +24,8 @@ export class UserLoginComponent implements OnInit {
     if (token) {
       localStorage.setItem('token', token.userName);
       this._alertify.success('Login successfull');
+
+      this._router.navigate(['/']);
     } else {
       this._alertify.error('User id or password is wrong');
     }
