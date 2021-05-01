@@ -13,6 +13,10 @@ export class AddPropertyComponent implements OnInit {
   @ViewChild('Form') addPropertyForm: NgForm;
   @ViewChild('formTabs') formTabs: TabsetComponent;
 
+  // Will come from masters
+  propertyTypes: Array<string> = ['House', 'Apartment', 'Duplex'];
+  furnishTypes: Array<string> = ['Fully', 'Semi', 'Unfurnished'];
+
   constructor(private _router: Router) { }
 
   ngOnInit() {
