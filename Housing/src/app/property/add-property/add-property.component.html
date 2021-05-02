@@ -1,5 +1,5 @@
 <div class="row mb-5">
-  <div class="col-8">
+  <div class="col-8 shadow-lg p-0">
       <div class="card">
         <div class="card-header">
           <h3>List your property</h3>
@@ -7,13 +7,13 @@
         <div class="card-body">
 
           <form (ngSubmit)="onSubmit()" #Form="ngForm">
-            <div>
-              <tabset #formTabs>
+            <div class="tab-panel">
+              <tabset class="member-tabset" #formTabs>
 
-                <tab heading="Basic info">
+                <tab heading="Basic info" ngModelGroup="BasicInfo" #BasicInfo="ngModelGroup">
                   <div class="form-group col-12">
                     <p>I want to</p>
-                    <div class="btn-group" btnRadioGroup>
+                    <div class="btn-group" btnRadioGroup ngModel name="SellRent" required>
                       <label class="btn btn-outline-primary" btnRadio=1 role="button" name="SellRent">Sell</label>
                       <label class="btn btn-outline-primary" btnRadio=2 role="button" name="SellRent">Rent</label>
                     </div>
@@ -21,7 +21,7 @@
 
                   <div class="form-group col-12">
                     <p>BHK (Bedroom , Hall, Kitchen)</p>
-                    <div class="btn-group" btnRadioGroup>
+                    <div class="btn-group" btnRadioGroup [(ngModel)]="propertyView.BHK" name="FType">
                       <label *ngFor="let bhk of [1, 2, 3, 4]"
                               class="btn btn-outline-primary"
                               [btnRadio]=$any(bhk)
@@ -33,8 +33,7 @@
 
                   <div class="form-group col-12">
                     <p>Property Type</p>
-                    <div class="btn-group" btnRadioGroup name="PropType"
-                    [(ngModel)]="propertyView.Type">
+                    <div class="btn-group" btnRadioGroup name="PropType" [(ngModel)]="propertyView.PType">
                       <label *ngFor="let ptype of propertyTypes"
                               class="btn btn-outline-primary"
                               [btnRadio]="ptype"
@@ -74,11 +73,11 @@
 
                   <div class="form-group col-12">
                     <label>City</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="propertyView.City" name="City">
                   </div>
 
                   <div class="form-group col-12">
-                    <button type="button" class="btn btn-primary btn-block" (click)="selectTab(1)">Next</button>
+                    <button [disabled]="!BasicInfo.valid" type="button" class="btn btn-primary btn-block" (click)="selectTab(1)">Next</button>
                   </div>
                 </tab>
 
@@ -100,7 +99,7 @@
 
                   <div class="form-group col-12">
                     <label>Built Area (in Sqr Feet)</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="propertyView.BuiltArea" name="BuiltArea">
                   </div>
 
                   <div class="form-group col-12">
@@ -228,9 +227,9 @@
   <div class="col-4">
     <div class="card-header">
       <h3>Your Property Preview</h3>
-      <div>
-        <app-property-card [Property]="propertyView"></app-property-card>
-      </div>
+    </div>
+    <div class="shadow-lg p-3 bg-light">
+      <app-property-card [Property]="propertyView" [hideIcons]="true"></app-property-card>
     </div>
   </div>
 </div>
