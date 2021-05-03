@@ -24,7 +24,7 @@
                     <div class="btn-group"
                         btnRadioGroup
                         [(ngModel)]="propertyView.BHK"
-                        formControlName="BHK"
+                        name="BHK"
                         [ngModelOptions]="{standalone: true}">
                       <label *ngFor="let bhk of [1, 2, 3, 4]"
                               class="btn btn-outline-primary"
@@ -49,7 +49,11 @@
 
                   <div class="form-group col-12">
                     <p>Furnished Type</p>
-                    <div class="btn-group" btnRadioGroup formControlName="FType" [(ngModel)]="propertyView.FType">
+                    <div class="btn-group"
+                        btnRadioGroup
+                        name="FType"
+                        [(ngModel)]="propertyView.FType"
+                        [ngModelOptions]="{standalone: true}">
                       <label *ngFor="let ftype of furnishTypes"
                               class="btn btn-outline-primary"
                               [btnRadio]="ftype"
@@ -63,7 +67,6 @@
                     <label for="name">in Building/Society/Project</label>
                     <input type="text"
                           class="form-control"
-                          ngModel
                           formControlName="Name"
                           minlength="5"
                           [(ngModel)]="propertyView.Name">
@@ -75,7 +78,11 @@
 
                   <div class="form-group col-12">
                     <label>City</label>
-                    <input type="text" class="form-control" [(ngModel)]="propertyView.City" formControlName="City">
+                    <input type="text"
+                          class="form-control"
+                          [(ngModel)]="propertyView.City"
+                          name="City"
+                          [ngModelOptions]="{standalone: true}">
                   </div>
 
                   <div class="form-group col-12">
@@ -91,12 +98,12 @@
 
                   <div class="form-group col-12">
                     <label>Security (in USD)</label>
-                    <input type="text" class="form-control" formControlName="Security">
+                    <input type="text" class="form-control" name="Security">
                   </div>
 
                   <div class="form-group col-12">
                     <label>Maintenance (in USD)</label>
-                    <input type="text" class="form-control" formControlName="Maintenance">
+                    <input type="text" class="form-control" name="Maintenance">
                   </div>
 
                   <div class="form-group col-12">
@@ -106,7 +113,7 @@
 
                   <div class="form-group col-12">
                     <label>Carpet Area(in Sqr Feet)</label>
-                    <input type="text" class="form-control" formControlName="CarpetArea">
+                    <input type="text" class="form-control" name="CarpetArea">
                   </div>
 
                   <div class="form-group col-12">
@@ -119,22 +126,22 @@
                 <tab heading="Address">
                   <div class="form-group col-12">
                     <label>Floor</label>
-                    <input type="text" class="form-control" formControlName="FloorNo">
+                    <input type="text" class="form-control" name="FloorNo">
                   </div>
 
                   <div class="form-group col-12">
                     <label>Total Floor</label>
-                    <input type="text" class="form-control" formControlName="TotalFloor">
+                    <input type="text" class="form-control" name="TotalFloor">
                   </div>
 
                   <div class="form-group col-12">
                     <label>Address</label>
-                    <input type="text" class="form-control" formControlName="Address">
+                    <input type="text" class="form-control" name="Address">
                   </div>
 
                   <div class="form-group col-12">
                     <label>Landmark</label>
-                    <input type="text" class="form-control" formControlName="LandMark">
+                    <input type="text" class="form-control" name="LandMark">
                   </div>
 
                   <div class="form-group col-12">
@@ -147,7 +154,7 @@
                 <tab heading="Other Details">
                   <div class="form-group col-12">
                     <p>Ready to Move</p>
-                    <div class="btn-group" btnRadioGroup formControlName="RTM">
+                    <div class="btn-group" btnRadioGroup name="RTM">
                       <label class="btn btn-outline-primary"
                       btnRadio=1 tabindex="0" role="button" name="RTM">Yes</label>
                       <label class="btn btn-outline-primary"
@@ -160,19 +167,19 @@
                     <input type="text"
                           placeholder="Datepicker"
                           class="form-control"
-                          formControlName="PossessionOn"
+                          name="PossessionOn"
                           bsDatepicker
                           [bsConfig]="{ isAnimated: true, containerClass: 'theme-dark-blue', dateInputFormat: 'MM-DD-YYYY'}">
                   </div>
 
                   <div class="form-group col-12">
                     <label>Age of Property</label>
-                    <input type="text" class="form-control" formControlName="AOP">
+                    <input type="text" class="form-control" name="AOP">
                   </div>
 
                   <div class="form-group col-12">
                     <p>Gated Community</p>
-                    <div class="btn-group" btnRadioGroup formControlName="Gated">
+                    <div class="btn-group" btnRadioGroup name="Gated">
                       <label class="btn btn-outline-primary"
                       btnRadio=1 tabindex="0" role="button" name="Gated">Yes</label>
                       <label class="btn btn-outline-primary"
@@ -182,7 +189,7 @@
 
                   <div class="form-group col-12">
                     <p>Main Entrance</p>
-                    <div class="btn-group" btnRadioGroup formControlName="MainEntrance">
+                    <div class="btn-group" btnRadioGroup name="MainEntrance">
                       <label class="btn btn-outline-primary"
                       btnRadio=1 tabindex="0" role="button" name="Entrance">East</label>
                       <label class="btn btn-outline-primary"
@@ -196,7 +203,7 @@
 
                   <div class="form-group col-12">
                     <label>Description</label>
-                    <textarea type="text" class="form-control" rows="6" formControlName="Description"></textarea>
+                    <textarea type="text" class="form-control" rows="6" name="Description"></textarea>
                   </div>
 
                   <div class="form-group col-12">

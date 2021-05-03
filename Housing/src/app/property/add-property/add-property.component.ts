@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators, FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { IPropertyBase } from 'src/app/model/IPropertyBase';
@@ -55,7 +55,7 @@ export class AddPropertyComponent implements OnInit {
 
   onSubmit() {
     console.log('Congrats');
-    console.log('SellRent=' + this.addPropertyForm.value.BasicInfo.SellRent);
+    console.log('SellRent=' + this.addPropertyForm.value.SellRent);
     console.log(this.addPropertyForm);
   }
 
