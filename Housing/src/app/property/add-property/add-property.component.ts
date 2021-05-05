@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { IPropertyBase } from 'src/app/model/IPropertyBase';
 import { Property } from 'src/app/model/Property';
+import { AlertifyService } from 'src/app/services/alertify.service';
 import { HousingService } from 'src/app/services/housing.service';
 
 @Component({
@@ -17,7 +18,6 @@ import { HousingService } from 'src/app/services/housing.service';
   styleUrls: ['./add-property.component.css'],
 })
 export class AddPropertyComponent implements OnInit {
-  /* @ViewChild('Form') addPropertyForm: NgForm; */
   @ViewChild('formTabs') formTabs: TabsetComponent;
 
   addPropertyForm: FormGroup;
@@ -45,7 +45,8 @@ export class AddPropertyComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _router: Router,
-    private _housingService: HousingService
+    private _housingService: HousingService,
+    private _alertify: AlertifyService
   ) {}
 
   ngOnInit() {
@@ -207,10 +208,20 @@ export class AddPropertyComponent implements OnInit {
       this.mapProperty();
       this._housingService.addProperty(this.property);
 
-      console.log('Congrats');
+      this._alertify.success(
+        'Congrats, your property listed successfully on our website'
+      );
       console.log(this.addPropertyForm);
+
+      if (this.SellRent.value === '2') {
+        this._router.navigate(['/rent-property']);
+      } else {
+        this._router.navigate(['/']);
+      }
     } else {
-      console.log('Please review the form and provice all valid entries');
+      this._alertify.error(
+        'Please review the form and provide all valid entries'
+      );
     }
   }
 
