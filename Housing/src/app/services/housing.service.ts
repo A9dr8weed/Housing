@@ -33,4 +33,19 @@ export class HousingService {
   addProperty(property: Property) {
     localStorage.setItem('newProp', JSON.stringify(property));
   }
+
+  newPropId() {
+    // Перевіряємо чи міститься такий ключ і якщо міститься
+    if (localStorage.getItem('PID')) {
+      localStorage.setItem('PID', String(+localStorage.getItem('PID') + 1)); // збільшуємо його значення на 1
+
+      // повертаємо значення
+      return +localStorage.getItem('PID');
+    } else {
+      // якщо такого ID немає додати новий елемент в сховище з ключем '101'
+      localStorage.setItem('PID', '101');
+
+      return 101;
+    }
+  }
 }
