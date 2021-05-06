@@ -11,7 +11,15 @@ import { IPropertyBase } from '../model/IPropertyBase';
 export class HousingService {
   constructor(private _http: HttpClient) {}
 
-  getAllProperties(SellRent: number): Observable<IPropertyBase[]> {
+  getProperty(id: number) {
+    return this.getAllProperties().pipe(
+      map((propertiesArray) => {
+        return propertiesArray.find((p) => p.Id === id);
+      })
+    );
+  }
+
+  getAllProperties(SellRent?: number): Observable<IPropertyBase[]> {
     // дозволяє об'єднати кілька функцій в одну
     return this._http.get('data/properties.json').pipe(
       // дозволяє подати дані в функцію і повернути нові дані які автоматично обгорнуті до Observable
@@ -22,17 +30,28 @@ export class HousingService {
         // Якщо містить якесь значення
         if (localProperties) {
           for (const id in localProperties) {
-            // перевірка, чи властивість об'єкта власне його та чи властивість співапдає з переданим параметром
-            if (localProperties.hasOwnProperty(id) && localProperties[id].SellRent === SellRent) {
-              propertiesArray.push(localProperties[id]); // вставляємо кожен отриманий елемент, (id, щоб отримати одиничний елемент масиву)
+            if (SellRent) {
+              // перевірка, чи властивість об'єкта власне його та чи властивість співапдає з переданим параметром
+              if (
+                localProperties.hasOwnProperty(id) &&
+                localProperties[id].SellRent === SellRent
+              ) {
+                propertiesArray.push(localProperties[id]); // вставляємо кожен отриманий елемент, (id, щоб отримати одиничний елемент масиву)
+              }
+            } else {
+              propertiesArray.push(localProperties[id]);
             }
           }
         }
 
         for (const id in data) {
-          // перевірка, чи властивість об'єкта власне його та чи властивість співапдає з переданим параметром
-          if (data.hasOwnProperty(id) && data[id].SellRent === SellRent) {
-            propertiesArray.push(data[id]); // вставляємо кожен отриманий елемент, (id, щоб отримати одиничний елемент масиву)
+          if (SellRent) {
+            // перевірка, чи властивість об'єкта власне його та чи властивість співапдає з переданим параметром
+            if (data.hasOwnProperty(id) && data[id].SellRent === SellRent) {
+              propertiesArray.push(data[id]); // вставляємо кожен отриманий елемент, (id, щоб отримати одиничний елемент масиву)
+            }
+          } else {
+            propertiesArray.push(data[id]);
           }
         }
 

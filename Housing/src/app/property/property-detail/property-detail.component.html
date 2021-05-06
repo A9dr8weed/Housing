@@ -6,31 +6,33 @@
       </div>
 
       <div class="card-body">
-        <h1 class="card-title">Pearl Green</h1>
+        <h1 class="card-title">{{ property.Name }}</h1>
 
         <div>
-          <strong>2 BHK Apartment @ $1200</strong>
+          <strong>
+            {{ property.BHK }} BHK {{ property.PType }} @ ${{ property.Price }}
+          </strong>
         </div>
 
         <div>
-          <strong>in New York</strong>
+          <strong>in {{ property.City }}</strong>
         </div>
 
         <hr />
 
         <div>
           <strong>Build Area: </strong>
-          1200 Sqft
+          {{ property.BuiltArea }} Sqft
         </div>
 
         <div>
           <strong>Carpet Area: </strong>
-          1100 Sqft
+          {{ property.CarpetArea }} Sqft
         </div>
 
         <div>
           <strong>Furnishing Type: </strong>
-          Fully
+          {{ property.FType }}
         </div>
       </div>
 
