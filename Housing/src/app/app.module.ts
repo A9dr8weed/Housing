@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { Routes, RouterModule } from '@angular/router'
+import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabsModule } from 'ngx-bootstrap/tabs';
@@ -21,17 +21,22 @@ import { UserRegisterComponent } from './user/user-register/user-register.compon
 import { UserServiceService } from './services/user-service.service';
 import { AlertifyService } from './services/alertify.service';
 import { AuthService } from './services/auth.service';
+import { PropertyDetailResolverService } from './property/property-detail/property-detail-resolver.service';
 
 // Routes
 const appRoutes: Routes = [
-  {path: '', component: PropertyListComponent},
-  {path: 'rent-property', component: PropertyListComponent},
-  {path: 'add-property', component: AddPropertyComponent},
-  {path: 'property-detail/:id', component: PropertyDetailComponent},
-  {path: 'user/login', component: UserLoginComponent},
-  {path: 'user/register', component: UserRegisterComponent},
-  {path: '**', component: PropertyListComponent}
-]
+  { path: '', component: PropertyListComponent },
+  { path: 'rent-property', component: PropertyListComponent },
+  { path: 'add-property', component: AddPropertyComponent },
+  {
+    path: 'property-detail/:id',
+    component: PropertyDetailComponent,
+    resolve: { prp: PropertyDetailResolverService },
+  },
+  { path: 'user/login', component: UserLoginComponent },
+  { path: 'user/register', component: UserRegisterComponent },
+  { path: '**', component: PropertyListComponent },
+];
 
 @NgModule({
   declarations: [
@@ -42,8 +47,8 @@ const appRoutes: Routes = [
     AddPropertyComponent,
     PropertyDetailComponent,
     UserLoginComponent,
-    UserRegisterComponent
-   ],
+    UserRegisterComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -59,8 +64,9 @@ const appRoutes: Routes = [
     HousingService,
     UserServiceService,
     AlertifyService,
-    AuthService
+    AuthService,
+    PropertyDetailResolverService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

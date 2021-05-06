@@ -19,12 +19,12 @@ export class HousingService {
     );
   }
 
-  getAllProperties(SellRent?: number): Observable<IPropertyBase[]> {
+  getAllProperties(SellRent?: number): Observable<Property[]> {
     // дозволяє об'єднати кілька функцій в одну
     return this._http.get('data/properties.json').pipe(
       // дозволяє подати дані в функцію і повернути нові дані які автоматично обгорнуті до Observable
       map((data) => {
-        const propertiesArray: Array<IPropertyBase> = []; // для зберігання даних, які ми отримуємо від сервера
+        const propertiesArray: Array<Property> = []; // для зберігання даних, які ми отримуємо від сервера
         const localProperties = JSON.parse(localStorage.getItem('newProp'));
 
         // Якщо містить якесь значення
