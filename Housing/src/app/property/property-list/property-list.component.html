@@ -1,7 +1,10 @@
-Current Date : {{Today | date:'fullDate'}}
+<label>Filter City: &nbsp; </label>
+<input [(ngModel)]="City">
+<button type="button" (click)="onCityFilter()">Search</button>
+<button type="button" (click)="onCityFilterClear()">Clear</button>
 
 <div class="row">
-  <div *ngFor="let property of Properties | filter:'':'City' | sort:['Price', 'desc']" class="col-sm-4 shadow-lg p-3">
+  <div *ngFor="let property of Properties | filter:SearchCity:'City' | sort:['Price', 'desc']" class="col-sm-4 shadow-lg p-3">
     <app-property-card [Property]="property"></app-property-card>
   </div>
 </div>

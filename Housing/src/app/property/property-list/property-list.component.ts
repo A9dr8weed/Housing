@@ -12,6 +12,9 @@ export class PropertyListComponent implements OnInit {
   Properties: Array<IPropertyBase> = [];
   SellRent = 1;
 
+  City = '';
+  SearchCity = '';
+
   Today = new Date();
 
   constructor(
@@ -32,5 +35,14 @@ export class PropertyListComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  onCityFilter() {
+    this.SearchCity = this.City;
+  }
+
+  onCityFilterClear() {
+    this.SearchCity = '';
+    this.City = '';
   }
 }
