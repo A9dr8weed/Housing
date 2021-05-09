@@ -12,6 +12,8 @@ export class PropertyListComponent implements OnInit {
   Properties: Array<IPropertyBase>;
   SellRent = 1;
 
+  Today = new Date();
+
   constructor(
     private _housingService: HousingService,
     private _route: ActivatedRoute

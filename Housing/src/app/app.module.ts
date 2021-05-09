@@ -23,6 +23,7 @@ import { AlertifyService } from './services/alertify.service';
 import { AuthService } from './services/auth.service';
 import { PropertyDetailResolverService } from './property/property-detail/property-detail-resolver.service';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { FilterPipe } from './Pipes/filter.pipe';
 
 // Routes
 const appRoutes: Routes = [
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
     PropertyDetailComponent,
     UserLoginComponent,
     UserRegisterComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,7 @@ const appRoutes: Routes = [
     ButtonsModule.forRoot(),
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
-    NgxGalleryModule
+    NgxGalleryModule,
   ],
   providers: [
     HousingService,
