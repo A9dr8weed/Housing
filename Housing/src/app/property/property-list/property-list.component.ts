@@ -9,7 +9,7 @@ import { HousingService } from 'src/app/services/housing.service';
   styleUrls: ['./property-list.component.css'],
 })
 export class PropertyListComponent implements OnInit {
-  Properties: Array<IPropertyBase>;
+  Properties: Array<IPropertyBase> = [];
   SellRent = 1;
 
   Today = new Date();

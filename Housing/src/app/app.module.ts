@@ -24,6 +24,7 @@ import { AuthService } from './services/auth.service';
 import { PropertyDetailResolverService } from './property/property-detail/property-detail-resolver.service';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FilterPipe } from './Pipes/filter.pipe';
+import { SortPipe } from './Pipes/sort.pipe';
 
 // Routes
 const appRoutes: Routes = [
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
     UserLoginComponent,
     UserRegisterComponent,
     FilterPipe,
+    SortPipe,
   ],
   imports: [
     BrowserModule,

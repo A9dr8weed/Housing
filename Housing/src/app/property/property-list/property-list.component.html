@@ -1,7 +1,7 @@
 Current Date : {{Today | date:'fullDate'}}
 
 <div class="row">
-  <div *ngFor="let property of Properties | filter:'':'City'" class="col-sm-4 shadow-lg p-3">
+  <div *ngFor="let property of Properties | filter:'':'City' | sort:['Price', 'desc']" class="col-sm-4 shadow-lg p-3">
     <app-property-card [Property]="property"></app-property-card>
   </div>
 </div>
