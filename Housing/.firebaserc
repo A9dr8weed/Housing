@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "housing-tut"
+  },
+  "targets": {
+    "housing-tut": {
+      "hosting": {
+        "Housing": [
+          "housing-tut"
+        ]
+      }
+    }
+  }
+}

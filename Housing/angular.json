@@ -121,6 +121,10 @@
               "devServerTarget": "Housing:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }
